@@ -12,17 +12,15 @@ const Navbar = () => {
     };
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/appointment">Appointment</Link></li>
+        <li><Link to="/blog">Blog</Link></li>
         <li><Link to="/reviews">Reviews</Link></li>
-        <li><Link to="/contact">Contact Us</Link></li>
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }
         <li>{user ? <button onClick={logout} className='btn btn-secondary'>Sign Out</button> : <Link to="/login">Login</Link>}</li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-accent px-14">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -32,15 +30,12 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+                <Link to="/" className="btn btn-ghost normal-case text-xl">MY-MOON AUTO</Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-                <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Dashboard</label>
             </div>
         </div>
     );

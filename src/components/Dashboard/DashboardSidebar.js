@@ -17,25 +17,25 @@ const DashboardSidebar = ({ children }) => {
                     <ul className="menu p-4 overflow-y-auto w-48 bg-slate-700 text-white">
                         {/* <!-- Sidebar content here --> */}
                         <li>
-                            <NavLink to="myProfile">My Profile</NavLink>
+                            <NavLink to="/dashboard/myProfile">My Profile</NavLink>
                         </li>
                         <li>
-                            <NavLink to="myOrders">My Orders</NavLink>
+                            <NavLink to="/dashboard/myOrders">My Orders</NavLink>
                         </li>
                         <li>
-                            <NavLink to="addReview">Add Review</NavLink>
+                            <NavLink to="/dashboard/addReview">Add Review</NavLink>
                         </li>
                         <li>
-                            <NavLink to="manageUsers">Manage Users</NavLink>
+                            <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
                         </li>
                         <li>
-                            <NavLink to="manageOrders">Manage Orders</NavLink>
+                            <NavLink to="/dashboard/manageOrders">Manage Orders</NavLink>
                         </li>
                         <li>
-                            <NavLink to="manageProducts">Manage Products</NavLink>
+                            <NavLink to="/dashboard/manageProducts">Manage Products</NavLink>
                         </li>
                         <li>
-                            <NavLink to="addProducts">Add Products</NavLink>
+                            <NavLink to="/dashboard/addProducts">Add Products</NavLink>
                         </li>
                     </ul>
                 </div>
