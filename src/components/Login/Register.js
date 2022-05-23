@@ -2,6 +2,7 @@ import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
@@ -30,7 +31,8 @@ const Register = () => {
     }
 
     if (token) {
-        navigate('/appointment')
+        toast.success('User has been created successfully')
+        navigate('/')
     }
 
     const onSubmit = async data => {

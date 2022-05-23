@@ -11,10 +11,12 @@ import MyProfile from './components/Dashboard/MyProfile';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
-import RequireAdmin from './components/Login/RequireAdmin';
 import RequireAuth from './components/Login/RequireAuth';
 import Footer from './components/Shared/Footer';
 import Navbar from './components/Shared/Navbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ManageUsers from './components/Dashboard/ManageUsers';
 
 
 function App() {
@@ -34,17 +36,18 @@ function App() {
             <Route path="myProfile" element={<MyProfile></MyProfile>} />
           </Route>
         </Route>
-        <Route element={<RequireAdmin></RequireAdmin>}>
-          <Route path="/dashboard" element={<Dashboard></Dashboard>} >
-            <Route path="addProducts" element={<AddProduct></AddProduct>} />
-            <Route path="manageOrders" element={<ManageOrders></ManageOrders>} />
-            <Route path="manageProducts" element={<ManageProducts></ManageProducts>} />
-            <Route path="myProfile" element={<MyProfile></MyProfile>} />
-            <Route path="manageUsers" element={<MyProfile></MyProfile>} />
-          </Route>
+        {/* <Route element={<RequireAdmin></RequireAdmin>}> */}
+        <Route path="/dashboard" element={<Dashboard></Dashboard>} >
+          <Route path="addProducts" element={<AddProduct></AddProduct>} />
+          <Route path="manageOrders" element={<ManageOrders></ManageOrders>} />
+          <Route path="manageProducts" element={<ManageProducts></ManageProducts>} />
+          <Route path="myProfile" element={<MyProfile></MyProfile>} />
+          <Route path="manageUsers" element={<ManageUsers></ManageUsers>} />
         </Route>
+        {/* </Route> */}
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
