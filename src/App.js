@@ -17,6 +17,7 @@ import Navbar from './components/Shared/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageUsers from './components/Dashboard/ManageUsers';
+import ProductDetails from './components/Products/ProductDetails';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/blog" element={<Blogs></Blogs>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
+        <Route path="/productDetails/:id" element={<ProductDetails></ProductDetails>} />
 
         <Route element={<RequireAuth></RequireAuth>}>
           <Route path="/dashboard" element={<Dashboard></Dashboard>} >

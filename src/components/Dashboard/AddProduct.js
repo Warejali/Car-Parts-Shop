@@ -34,7 +34,8 @@ const AddProduct = () => {
                         email: data.email,
                         price: data.price,
                         img: img,
-                        minQuantity: data.minQuantity
+                        minQuantity: data.minQuantity,
+                        quantity: data.quantity
                     }
                     // send to db 
                     fetch('http://localhost:5000/product', {

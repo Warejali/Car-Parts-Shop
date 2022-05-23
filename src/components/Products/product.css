@@ -1,0 +1,14 @@
+.btn-buy {
+    width: 100%;
+    background: #FFE0B3;
+    border: none;
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+.btn-buy:hover {
+    background-color: orange;
+}

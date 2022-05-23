@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 import Product from './Product';
 
 const Products = () => {
-    const [products, setProduct] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/product')
-            .then(res => res.json())
-            .then(data => setProduct(data))
-    }, [])
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/product').then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
-        <div>
+        <div className='my-20'>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5'>
                 {
-                    products.map(product => <Product product={product}></Product>)
+                    products.map(product => <Product product={product} refetch={refetch}></Product>)
                 }
             </div>
         </div>
