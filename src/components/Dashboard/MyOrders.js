@@ -5,12 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
-    const [orders, setOrder] = useState([])
     const [user] = useAuthState(auth);
+    const [orders, setOrders] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+            fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
                 method: 'GET',
                 headers: {
                     "authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,36 +24,34 @@ const MyOrders = () => {
                     }
                     return res.json()
                 })
-                .then(data => setOrder(data))
+                .then(data => setOrders(data))
         }
     }, [user])
     return (
         <div>
-            <h2>My Appointment {orders.length}</h2>
+            <h2 className='text-2xl text-primary font-bold py-2'>Total orders {orders.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
                     <thead>
                         <tr>
                             <th>Serial</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Treatment</th>
+                            <th>Product Name</th>
+                            <th>Total Price</th>
+                            <th>Quantity</th>
                             <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            orders.map((a, index) =>
+                            orders.map((order, index) =>
                                 <tr>
-                                    <th>{index + 1}</th>
-                                    <td>{a.patientName}</td>
-                                    <td>{a.date}</td>
-                                    <td>{a.slot}</td>
-                                    <td>{a.treatment}</td>
-                                    <td>{(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-primary'>Pay Now</button></Link>}</td>
-                                    <td>{(a.price && a.paid) && <span className=' text-success'>Paid</span>}</td>
+                                    <th className='border'>{index + 1}</th>
+                                    <td className='border'>{order.product}</td>
+                                    <td className='border'>${order.price}</td>
+                                    <td className='border'>{order.orderQuantity}</td>
+                                    <td className='border'>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-primary'>Pay Now</button></Link>}</td>
+                                    <td>{(order.price && order.paid) && <span className=' text-success'>Paid</span>}</td>
                                 </tr>
                             )
                         }

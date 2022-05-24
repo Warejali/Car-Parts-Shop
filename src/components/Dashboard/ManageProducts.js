@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import useProducts from '../../hooks/useProducts';
 import Loading from '../Shared/Loading';
 import ManageProduct from './ManageProduct';
 

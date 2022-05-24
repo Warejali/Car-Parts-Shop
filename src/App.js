@@ -18,6 +18,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageUsers from './components/Dashboard/ManageUsers';
 import ProductDetails from './components/Products/ProductDetails';
+import RequireAdmin from './components/Login/RequireAdmin';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
         <Route path="/blog" element={<Blogs></Blogs>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
-        <Route path="/productDetails/:id" element={<ProductDetails></ProductDetails>} />
+
 
         <Route element={<RequireAuth></RequireAuth>}>
           <Route path="/dashboard" element={<Dashboard></Dashboard>} >
@@ -37,16 +38,15 @@ function App() {
             <Route path="myOrders" element={<MyOrders></MyOrders>} />
             <Route path="myProfile" element={<MyProfile></MyProfile>} />
           </Route>
+          <Route path="/productDetails/:id" element={<ProductDetails></ProductDetails>} />
         </Route>
-        {/* <Route element={<RequireAdmin></RequireAdmin>}> */}
         <Route path="/dashboard" element={<Dashboard></Dashboard>} >
-          <Route path="addProducts" element={<AddProduct></AddProduct>} />
-          <Route path="manageOrders" element={<ManageOrders></ManageOrders>} />
-          <Route path="manageProducts" element={<ManageProducts></ManageProducts>} />
+          <Route path="addProducts" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>} />
+          <Route path="manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>} />
+          <Route path="manageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>} />
+          <Route path="manageUsers" element={<RequireAdmin><ManageUsers></ManageUsers></RequireAdmin>} />
           <Route path="myProfile" element={<MyProfile></MyProfile>} />
-          <Route path="manageUsers" element={<ManageUsers></ManageUsers>} />
         </Route>
-        {/* </Route> */}
       </Routes>
       <Footer></Footer>
       <ToastContainer />

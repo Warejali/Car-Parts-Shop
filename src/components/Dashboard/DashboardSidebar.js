@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const DashboardSidebar = ({ children }) => {
+
     return (
         <div>
             <div className="drawer drawer-mobile">
@@ -20,22 +21,32 @@ const DashboardSidebar = ({ children }) => {
                             <NavLink to="/dashboard/myProfile">My Profile</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/myOrders">My Orders</NavLink>
+                            {
+                                <NavLink to="/dashboard/myOrders">My Orders</NavLink>
+                            }
                         </li>
                         <li>
                             <NavLink to="/dashboard/addReview">Add Review</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
+                            {
+                                <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
+                            }
                         </li>
                         <li>
-                            <NavLink to="/dashboard/manageOrders">Manage Orders</NavLink>
+                            {
+                                <NavLink to="/dashboard/manageOrders">Manage Orders</NavLink>
+                            }
                         </li>
                         <li>
-                            <NavLink to="/dashboard/manageProducts">Manage Products</NavLink>
+                            {
+                                <NavLink to="/dashboard/manageProducts">Manage Products</NavLink>
+                            }
                         </li>
                         <li>
-                            <NavLink to="/dashboard/addProducts">Add Products</NavLink>
+                            {
+                                <NavLink to="/dashboard/addProducts">Add Product</NavLink>
+                            }
                         </li>
                     </ul>
                 </div>
