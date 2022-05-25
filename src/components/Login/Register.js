@@ -2,7 +2,6 @@ import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
@@ -15,7 +14,7 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, error2] = useUpdateProfile(auth);
     const navigate = useNavigate();
     const [token] = useToken(user || user1)
@@ -31,13 +30,13 @@ const Register = () => {
     }
 
     if (token) {
-        toast.success('User has been created successfully')
         navigate('/')
     }
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
+        await updateProfile({ photoURL: data.img });
 
     }
     return (
@@ -85,6 +84,8 @@ const Register = () => {
 
                             </label>
                         </div>
+                        <input className='mb-4 input input-bordered w-full max-w-xs' placeholder='Photo URL (Optional)' type="text" {...register("img")} required />
+
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Password</span>

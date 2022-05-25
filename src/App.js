@@ -3,11 +3,9 @@ import './App.css';
 import Blogs from './components/Blogs';
 import AddProduct from './components/Dashboard/AddProduct';
 import AddReview from './components/Dashboard/AddReview';
-import Dashboard from './components/Dashboard/Dashboard';
 import ManageOrders from './components/Dashboard/ManageOrders';
 import ManageProducts from './components/Dashboard/ManageProducts';
 import MyOrders from './components/Dashboard/MyOrders';
-import MyProfile from './components/Dashboard/MyProfile';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
@@ -19,6 +17,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import ManageUsers from './components/Dashboard/ManageUsers';
 import ProductDetails from './components/Products/ProductDetails';
 import RequireAdmin from './components/Login/RequireAdmin';
+import Dashboard from './components/Dashboard/Dashboard';
+import ManageReview from './components/Dashboard/ManageReview';
+import MyProfile from './components/Dashboard/MyProfile';
 
 
 function App() {
@@ -30,22 +31,17 @@ function App() {
         <Route path="/blog" element={<Blogs></Blogs>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
+        <Route path="/productDetails/:id" element={<ProductDetails></ProductDetails>} />
 
-
-        <Route element={<RequireAuth></RequireAuth>}>
-          <Route path="/dashboard" element={<Dashboard></Dashboard>} >
-            <Route path="addReview" element={<AddReview></AddReview>} />
-            <Route path="myOrders" element={<MyOrders></MyOrders>} />
-            <Route path="myProfile" element={<MyProfile></MyProfile>} />
-          </Route>
-          <Route path="/productDetails/:id" element={<ProductDetails></ProductDetails>} />
-        </Route>
-        <Route path="/dashboard" element={<Dashboard></Dashboard>} >
-          <Route path="addProducts" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>} />
-          <Route path="manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>} />
-          <Route path="manageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>} />
-          <Route path="manageUsers" element={<RequireAdmin><ManageUsers></ManageUsers></RequireAdmin>} />
-          <Route path="myProfile" element={<MyProfile></MyProfile>} />
+        <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>} >
+          <Route index element={<MyProfile></MyProfile>} />
+          <Route path="addReview" element={<AddReview></AddReview>} />
+          <Route path="myOrders" element={<MyOrders></MyOrders>} ></Route>
+          <Route path="addProducts" element={<RequireAdmin><AddProduct /></RequireAdmin>} ></Route>
+          <Route path="manageOrders" element={<RequireAdmin><ManageOrders /></RequireAdmin>}></Route>
+          <Route path="manageProducts" element={<RequireAdmin><ManageProducts /></RequireAdmin>} ></Route>
+          <Route path="manageUsers" element={<RequireAdmin><ManageUsers /></RequireAdmin>} />
+          <Route path="manageReview" element={<RequireAdmin><ManageReview /></RequireAdmin>} />
         </Route>
       </Routes>
       <Footer></Footer>

@@ -22,11 +22,11 @@ const ManageUsers = () => {
 
                     <thead>
                         <tr>
-                            <th>Serial</th>
-                            <th>Id</th>
+                            <th>Photo</th>
+                            <th>ID</th>
                             <th>Email</th>
                             <th>Roll</th>
-                            <th>Treatment</th>
+                            <th>Photo</th>
                         </tr>
                     </thead>
                     <tbody>

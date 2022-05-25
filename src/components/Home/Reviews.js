@@ -13,7 +13,7 @@ const Reviews = () => {
     }
     return (
         <div>
-            <div className=''>
+            <div className='grid lg:grid-cols-3 gap-5'>
                 {
                     reviews.map(review => <Review refetch={refetch} key={review._id} review={review}></Review>)
                 }

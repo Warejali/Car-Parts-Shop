@@ -8,7 +8,7 @@ import { useStars } from "stars-rating-react-hooks";
 const AddReview = () => {
     const [user] = useAuthState(auth);
     const name = user.displayName;
-
+    const img = user.photoURL;
 
     const config = {
         totalStars: 5,
@@ -22,13 +22,10 @@ const AddReview = () => {
         getStarProps,
         getStarWrapperProps,
         isSelecting,
-        // selectingValue and selectedValue are same after user rates
         selectingValue,
         selectedValue
     } = useStars(config);
 
-    // check console logs:
-    // selectingValue and selectedValue are same after user rates
     console.log({ selectingValue, selectedValue });
 
 
@@ -36,9 +33,11 @@ const AddReview = () => {
         event.preventDefault();
         const userName = event.target.name.value;
         const text = event.target.text.value;
+        const image = event.target.image.value;
         console.log(text);
         const review = {
             userName,
+            image,
             text,
             star: selectingValue
         }
@@ -52,15 +51,22 @@ const AddReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 toast.success("done")
+                data("")
             })
     }
     return (
         <div>
             <form onSubmit={reviewSubmit}>
-                <input name='name' type="text" value={name} class="input input-bordered input-primary w-full max-w-xs" />
-                <textarea name='text' class="textarea textarea-primary w-full max-w-xs my-4" placeholder="Type Your text"></textarea>
+                <div>
+                    <input name='name' type="text" value={name} class="input input-bordered input-primary w-full max-w-xs my-5" />
+                </div>
+                <div>
+                    <input name='image' type="url" value={img} class="input input-bordered input-primary w-full max-w-xs" />
+                </div>
+                <div>
+                    <textarea name='text' class="textarea textarea-primary w-full max-w-xs my-4" placeholder="Type Your text"></textarea>
+                </div>
 
                 <div>
                     <h3>
