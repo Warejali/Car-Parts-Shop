@@ -21,6 +21,7 @@ const ProductDetails = () => {
             productId: _id,
             product: name,
             orderQuantity,
+            img,
             price: price * orderQuantity,
             userEmail: user.email
         }
@@ -42,22 +43,22 @@ const ProductDetails = () => {
 
 
     return (
-        <div class="hero min-h-screen lg:mx-auto">
-            <div class="hero-content grid grid-cols-2 gap-20 px-16">
+        <div className="hero min-h-screen lg:mx-auto">
+            <div className="hero-content grid grid-cols-2 gap-20 px-16">
                 <div className='flex-1'>
                     <img src={img} alt="" />
                 </div>
                 <form onSubmit={submitForm}>
                     <div className='flex-1'>
-                        <h1 class="text-3xl font-bold">{name}</h1>
+                        <h1 className="text-3xl font-bold">{name}</h1>
                         <small>{description}</small>
-                        <p class="py-3 font-bold">Price per unit: ${price}</p>
-                        <p class="py-3 font-bold">Stock Quantity: {quantity}</p>
+                        <p className="py-3 font-bold">Price per unit: ${price}</p>
+                        <p className="py-3 font-bold">Stock Quantity: {quantity}</p>
                         <div>
-                            <input type="number" name='orderQuantity' placeholder="type quantity" class="input input-bordered input-primary max-w-xs" />
+                            <input type="number" name='orderQuantity' placeholder="type quantity" className="input input-bordered input-primary max-w-xs" />
                         </div>
                         <div className='py-3'>
-                            <button class="btn btn-primary">Check Out</button>
+                            <button className="btn btn-primary">Check Out</button>
                         </div>
                     </div>
                 </form>

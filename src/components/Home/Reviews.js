@@ -5,7 +5,7 @@ import Review from './Review';
 
 const Reviews = () => {
     const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch('http://localhost:5000/review', {
-        method: "get"
+        method: "GET"
     }).then(res => res.json()))
 
     if (isLoading) {
