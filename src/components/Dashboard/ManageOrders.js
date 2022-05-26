@@ -36,8 +36,10 @@ const ManageOrders = () => {
                                     <td className='border'>{order.product}</td>
                                     <td className='border'>${order.price}</td>
                                     <td className='border'>{order.orderQuantity}</td>
-                                    <td className='border'>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-primary'>Not Paid</button></Link>}</td>
-                                    <td>{(order.price && order.paid) && <span className=' text-success'>Paid</span>}</td>
+                                    <td className='border bg-red-100'>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='font-bold'>Not Paid</button></Link>}
+                                        {(order.price && order.paid) && <span className=' font-bold'>Paid</span>}
+
+                                    </td>
                                 </tr>
                             )
                         }

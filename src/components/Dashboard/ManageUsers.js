@@ -11,6 +11,7 @@ const ManageUsers = () => {
             authorization: ` Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -25,8 +26,8 @@ const ManageUsers = () => {
                             <th>Photo</th>
                             <th>ID</th>
                             <th>Email</th>
-                            <th>Roll</th>
-                            <th>Photo</th>
+                            <th>Role</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

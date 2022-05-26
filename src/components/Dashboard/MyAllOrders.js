@@ -1,33 +1,47 @@
-import { signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
-const MyOrders = () => {
+const MyAllOrders = () => {
     const [user] = useAuthState(auth);
-    const [orders, setOrders] = useState([])
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (user) {
-            fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
-                method: 'GET',
-                headers: {
-                    "authorization": `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-                .then(res => {
-                    if (res.status === 401 || res.status === 403) {
-                        signOut(auth);
-                        localStorage.removeItem('accessToken')
-                        navigate('/')
-                    }
-                    return res.json()
-                })
-                .then(data => setOrders(data))
-        }
-    }, [user])
+    const [order, setOrder] = useState();
 
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
+        method: 'GET',
+        headers: {
+            authorization: ` Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are You sure to delete?');
+        if (proceed) {
+            const url = `http://localhost:5000/order/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = order.filter(o => o._id !== id);
+                    setOrder(remaining);
+                    toast.success("Product has been deleted")
+                    refetch()
+                })
+        }
+    }
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h2 className='text-2xl text-primary font-bold py-2'>Total orders {orders.length}</h2>
@@ -56,6 +70,10 @@ const MyOrders = () => {
 
                                         {(order.price && order.paid) && <span className=' text-white btn btn-success btn-sm btn-disabled'>Paid</span>}
                                     </td>
+                                    <td>
+                                        <button onClick={() => handleDelete(order._id)} class="btn btn-xs">Delete <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                             )
                         }
@@ -67,4 +85,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default MyAllOrders;

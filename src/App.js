@@ -21,6 +21,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ManageReview from './components/Dashboard/ManageReview';
 import MyProfile from './components/Dashboard/MyProfile';
 import Payment from './components/Dashboard/Payment';
+import MyAllOrders from './components/Dashboard/MyAllOrders';
 
 
 function App() {
@@ -32,12 +33,13 @@ function App() {
         <Route path="/blog" element={<Blogs></Blogs>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
-        <Route path="/productDetails/:id" element={<ProductDetails></ProductDetails>} />
+        <Route path="/productDetails/:id" element={<RequireAuth><ProductDetails></ProductDetails></RequireAuth>} />
 
         <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>} >
           <Route index element={<MyProfile></MyProfile>} />
           <Route path="addReview" element={<AddReview></AddReview>} />
           <Route path="myOrders" element={<MyOrders></MyOrders>} ></Route>
+          <Route path="myAllOrders" element={<MyAllOrders></MyAllOrders>} ></Route>
           <Route path="payment/:id" element={<Payment></Payment>} ></Route>
           <Route path="addProducts" element={<RequireAdmin><AddProduct /></RequireAdmin>} ></Route>
           <Route path="manageOrders" element={<RequireAdmin><ManageOrders /></RequireAdmin>}></Route>

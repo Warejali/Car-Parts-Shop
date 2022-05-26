@@ -21,6 +21,7 @@ const ProductDetails = () => {
             productId: _id,
             product: name,
             orderQuantity,
+            minQuantity,
             img,
             price: price * orderQuantity,
             userEmail: user.email
@@ -36,32 +37,53 @@ const ProductDetails = () => {
             .then(data => {
                 console.log(data)
                 toast.success("done")
+                navigate('/dashboard/myOrders')
             })
-
     }
 
 
 
     return (
-        <div className="hero min-h-screen lg:mx-auto">
-            <div className="hero-content grid grid-cols-2 gap-20 px-16">
-                <div className='flex-1'>
-                    <img src={img} alt="" />
+        <div>
+            <div class="collapse">
+                <input type="checkbox" class="peer" />
+                <div class="collapse-title w-96 mx-auto">
+                    <h2 className='text-2xl text-primary font-bold'>Product Details</h2>
                 </div>
-                <form onSubmit={submitForm}>
-                    <div className='flex-1'>
-                        <h1 className="text-3xl font-bold">{name}</h1>
-                        <small>{description}</small>
-                        <p className="py-3 font-bold">Price per unit: ${price}</p>
-                        <p className="py-3 font-bold">Stock Quantity: {quantity}</p>
-                        <div>
-                            <input type="number" name='orderQuantity' placeholder="type quantity" className="input input-bordered input-primary max-w-xs" />
+                <div class="collapse-content">
+                    <div className="hero lg:mx-auto">
+                        <div className="hero-content grid lg:grid-cols-2 lg:gap-20 lg:px-16">
+                            <div>
+                                <img className='lg:w-80' src={img} alt="" />
+                            </div>
+                            <div>
+                                <h1 className="text-3xl font-bold">{name}</h1>
+                                <small>{description}</small>
+                                <p className="py-3 font-bold">Price per unit: ${price}</p>
+                                <p className="py-3 font-bold">Stock Quantity: {quantity}</p>
+                                <p className="py-3 font-bold">Min Order Quantity: {minQuantity}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div>
+                <div className='lg:w-96 mx-auto'>
+                    <form onSubmit={submitForm}>
+                        <div className='flex-1'>
+                            <p className="py-3 font-bold">Price per unit: ${price}</p>
+                            <p className="py-3 font-bold">Stock Quantity: {quantity}</p>
+                            <p className="py-3 font-bold">Min Order Quantity: {minQuantity}</p>
+                            <div>
+                                <input type="number" name='orderQuantity' placeholder="type quantity" className="input input-bordered input-primary max-w-xs" />
+                            </div>
                         </div>
                         <div className='py-3'>
                             <button className="btn btn-primary">Check Out</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );
