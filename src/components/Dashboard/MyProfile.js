@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyProfile = () => {
+    const { id } = useParams();
     const [user] = useAuthState(auth);
+    const navigate = useNavigate()
+    const { email, displayName } = user;
+    const [profile, setProfile] = useState({});
 
+    useEffect(() => {
+        const url = `http://localhost:5000/profile/${id}`;
+        fetch(url, {
+            method: "GET",
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setProfile(data))
+    }, [id])
+
+
+    const goToUpdate = () => {
+        navigate(`/dashboard/updateProfile`)
+    }
     return (
         <div className=' lg:pt-20 z-19'>
 
@@ -17,10 +38,13 @@ const MyProfile = () => {
                 </div>
 
                 <div class="card-body items-center text-center">
-                    <h2 class="card-title">{user.displayName}</h2>
-                    <p>{user.email}</p>
+                    <h2 class="card-title">{displayName}</h2>
+                    <p>{email}</p>
+                    <p>{profile.phone}</p>
+                    <p>{profile.education}</p>
+
                     <div class="card-actions">
-                        <button class="btn btn-primary">Update Profile</button>
+                        <button onClick={() => goToUpdate(email)} class="btn btn-primary">Update Profile</button>
                     </div>
                 </div>
             </div>

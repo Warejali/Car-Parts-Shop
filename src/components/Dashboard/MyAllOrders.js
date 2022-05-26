@@ -54,8 +54,10 @@ const MyAllOrders = () => {
                             <th>Product Name</th>
                             <th>Total Price</th>
                             <th>Quantity</th>
+                            <th>Transaction ID</th>
                             <th>Payment</th>
                             <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -66,6 +68,7 @@ const MyAllOrders = () => {
                                     <td className='border'>{order.product}</td>
                                     <td className='border'>${order.price}</td>
                                     <td className='border'>{order.orderQuantity}</td>
+                                    <td className='border'>{order.transactionId}</td>
                                     <td className='border'>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-primary'>Pay Now</button>
                                     </Link>}
 
