@@ -22,21 +22,15 @@ const Payment = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
-            <h2>ID {id}</h2>
-            <div className='grid lg:grid-cols-2 lg:mx-24'>
-                <div className="card w-96 bg-base-100 shadow-xl">
-                    {/* <figure className="px-10 pt-10">
-                        <img src={orders.img} alt="Shoes" className="rounded-xl" />
-                    </figure> */}
+        <div className='mt-20'>
+            <div className='grid lg:grid-cols-2 lg:mx-24 gap-5'>
+                <div className="card bg-base-100 shadow-xl">
                     <div className="card-body items-center text-center">
-
-                        <p className='font-bold'>Total Price {orders.price} USD</p>
-                        <p className='font-bold'>Total Quantity {orders.orderQuantity}</p>
+                        <p className='font-bold text-gray-400'>Total Price {orders.price} USD</p>
+                        <p className='font-bold text-gray-400'>Total Quantity {orders.orderQuantity}</p>
                     </div>
                 </div>
-                <div className="card bg-base-100 shadow-xl px-7">
-
+                <div className="card bg-base-100 shadow-xl p-5">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm orders={orders} />
                     </Elements>

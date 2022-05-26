@@ -37,8 +37,8 @@ const ProductDetails = () => {
             .then(data => {
                 console.log(data)
                 toast.success("done")
-                navigate('/dashboard/myOrders')
             })
+        navigate('/dashboard/MyAllOrders')
     }
 
 
@@ -47,8 +47,8 @@ const ProductDetails = () => {
         <div>
             <div class="collapse">
                 <input type="checkbox" class="peer" />
-                <div class="collapse-title w-96 mx-auto">
-                    <h2 className='text-2xl text-primary font-bold'>Product Details</h2>
+                <div class="collapse-title w-96 mx-auto bg-red-100 rounded-xl mt-5 text-center">
+                    <h2 className='text-2xl text-primary font-bold uppercase'>Product Details</h2>
                 </div>
                 <div class="collapse-content">
                     <div className="hero lg:mx-auto">
@@ -69,20 +69,60 @@ const ProductDetails = () => {
             </div>
             <div class="divider"></div>
             <div>
-                <div className='lg:w-96 mx-auto'>
-                    <form onSubmit={submitForm}>
-                        <div className='flex-1'>
-                            <p className="py-3 font-bold">Price per unit: ${price}</p>
-                            <p className="py-3 font-bold">Stock Quantity: {quantity}</p>
-                            <p className="py-3 font-bold">Min Order Quantity: {minQuantity}</p>
-                            <div>
-                                <input type="number" name='orderQuantity' placeholder="type quantity" className="input input-bordered input-primary max-w-xs" />
+                <div class="hero bg-base-200">
+
+                    <div class="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100 my-5">
+                        <form onSubmit={submitForm} class="card-body">
+                            <div className='grid lg:grid-cols-2 gap-5'>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Please enter less than {quantity} or greater than {minQuantity} or equal</span>
+                                    </label>
+                                    <input type="number" name='orderQuantity' placeholder="type quantity" class="input input-bordered" />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Name</span>
+                                    </label>
+                                    <input type="text" value={user.displayName} class="input input-bordered" />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Email</span>
+                                    </label>
+                                    <input type="text" value={user.email} class="input input-bordered" />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Phone</span>
+                                    </label>
+                                    <input type="text" placeholder='type your phone number' class="input input-bordered" />
+                                </div>
+                                <div class="form-control my-5">
+                                    <label class="label">
+                                        <span class="label-text">Address line</span>
+                                    </label>
+                                    <input type="text" placeholder='Address line' class="input input-bordered" />
+                                </div>
+
+                                <div class="form-control my-5">
+                                    <label class="label">
+                                        <span class="label-text">City</span>
+                                    </label>
+                                    <input type="text" placeholder='City' class="input input-bordered" />
+                                </div><div class="form-control my-5">
+                                    <label class="label">
+                                        <span class="label-text">Country</span>
+                                    </label>
+                                    <input type="text" placeholder='Country' class="input input-bordered" />
+                                </div>
+
                             </div>
-                        </div>
-                        <div className='py-3'>
-                            <button className="btn btn-primary">Check Out</button>
-                        </div>
-                    </form>
+                            <div class="form-control mt-6">
+                                <button class="btn btn-primary">Check Out</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

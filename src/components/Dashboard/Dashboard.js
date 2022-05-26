@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <ul className="menu p-4 overflow-y-auto w-48 bg-slate-700 text-white">
                         {/* <!-- Sidebar content here --> */}
                         <li>
-                            <NavLink to="/dashboard">My Profile</NavLink>
+                            <NavLink to="/dashboard/">My Profile</NavLink>
                         </li>
                         <li>
                             {

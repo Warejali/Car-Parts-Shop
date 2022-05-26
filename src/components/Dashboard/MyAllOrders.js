@@ -55,6 +55,7 @@ const MyAllOrders = () => {
                             <th>Total Price</th>
                             <th>Quantity</th>
                             <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,9 +71,11 @@ const MyAllOrders = () => {
 
                                         {(order.price && order.paid) && <span className=' text-white btn btn-success btn-sm btn-disabled'>Paid</span>}
                                     </td>
-                                    <td>
-                                        <button onClick={() => handleDelete(order._id)} class="btn btn-xs">Delete <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                                        </button>
+                                    <td className='border'>
+                                        {
+                                            !order.paid ? <button onClick={() => handleDelete(order._id)} class="btn btn-xs">Cancel <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                            </button> : <button disabled className='btn btn-xs'>Cancel</button>
+                                        }
                                     </td>
                                 </tr>
                             )
