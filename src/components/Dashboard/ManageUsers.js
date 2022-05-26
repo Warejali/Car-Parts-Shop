@@ -5,7 +5,7 @@ import UserTable from './UserTable';
 
 const ManageUsers = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://pacific-eyrie-12324.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: ` Bearer ${localStorage.getItem('accessToken')}`

@@ -10,7 +10,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
+            fetch(`https://pacific-eyrie-12324.herokuapp.com/order?userEmail=${user.email}`, {
                 method: 'GET',
                 headers: {
                     "authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -48,9 +48,9 @@ const MyOrders = () => {
                             orders.map((order, index) =>
                                 <tr>
                                     <th className='border'>{index + 1}</th>
-                                    <td className='border'>{order.product}</td>
+                                    <td className='border'>{order.name}</td>
                                     <td className='border'>${order.price}</td>
-                                    <td className='border'>{order.orderQuantity}</td>
+                                    <td className='border'>{order.quantity}</td>
                                     <td className='border'>id:{order.transactionId}</td>
                                     <td className='border'>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-primary'>Pay Now</button>
                                     </Link>}

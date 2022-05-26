@@ -21,7 +21,7 @@ const UpdateProfile = () => {
         const country = event.target.country.value;
         const updateUser = { name, email, education, about, city, phone, LinkedIn, country };
 
-        const url = `http://localhost:5000/users/${email}`
+        const url = `https://pacific-eyrie-12324.herokuapp.com/users/${email}`
         fetch(url, {
             method: 'PUT',
             headers: {

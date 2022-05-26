@@ -1,13 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './product.css'
 
 const Product = ({ product, refetch }) => {
     const navigate = useNavigate()
     const { _id, name, img, description, price, minQuantity, quantity } = product;
 
     const buyNowHandle = id => {
-        navigate(`/productDetails/${id}`);
+        navigate(`/purchase/${id}`);
     }
     return (
         <div class="card bg-base-100 shadow-xl">
@@ -17,13 +16,13 @@ const Product = ({ product, refetch }) => {
             <div class="card-body items-center text-center">
                 <h2 class="card-title uppercase">{name}</h2>
                 <small>{description}</small>
-                <div className=' grid grid-cols-2 gap-10 px-5 py-2 rounded mb-7'>
-                    <p className='font-semibold'>Min Order: <span className='text-accent'>{minQuantity}</span></p>
-                    <p className='font-semibold'>stock: <span className='text-accent'>{quantity}</span></p>
-                </div>
-                <div className='btn-buy grid md:grid-cols-2 gap-5 py-3'>
-                    <p className='font-bold'>Price per Unite: <span className='text-accent'>{price}</span></p>
-                    <button onClick={() => buyNowHandle(_id)} className='font-bold'>Buy Now</button>
+
+                <p className='font-semibold'>Min Order: <span className='text-accent'>{minQuantity}</span></p>
+                <p className='font-semibold'>stock: <span className='text-accent'>{quantity}</span></p>
+
+                <p className='font-bold'>Price per Unite: <span className='text-accent'>{price}</span></p>
+                <div className='btn btn-primary py-3 bg-primary'>
+                    <button onClick={() => buyNowHandle(_id)} className='font-bold '>Buy Now</button>
                 </div>
             </div>
         </div>

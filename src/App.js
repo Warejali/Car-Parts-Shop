@@ -23,6 +23,8 @@ import Payment from './components/Dashboard/Payment';
 import MyAllOrders from './components/Dashboard/MyAllOrders';
 import UpdateProfile from './components/Dashboard/UpdateProfile';
 import Blogs from './components/Blogs/Blogs';
+import NotFound from './components/Shared/NotFound';
+import Purchase from './components/Products/Purchase';
 
 
 function App() {
@@ -35,6 +37,7 @@ function App() {
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
         <Route path="/productDetails/:id" element={<RequireAuth><ProductDetails></ProductDetails></RequireAuth>} />
+        <Route path="/purchase/:id" element={<RequireAuth><Purchase></Purchase></RequireAuth>} />
 
 
         <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>} >
@@ -50,6 +53,7 @@ function App() {
           <Route path="manageUsers" element={<RequireAdmin><ManageUsers /></RequireAdmin>} />
           <Route path="manageReview" element={<RequireAdmin><ManageReview /></RequireAdmin>} />
         </Route>
+        <Route path="/*" element={<NotFound></NotFound>} />
       </Routes>
       <Footer></Footer>
       <ToastContainer />

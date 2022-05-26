@@ -11,7 +11,7 @@ const AddProduct = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const { data: products, isLoading, refetch } = useQuery('services', () => fetch('http://localhost:5000/product').then(res => res.json()))
+    const { data: products, isLoading, refetch } = useQuery('services', () => fetch('https://pacific-eyrie-12324.herokuapp.com/product').then(res => res.json()))
 
     const imageStorageKey = '100d68a470e46ca6b971169172b3b2a5';
 
@@ -38,7 +38,7 @@ const AddProduct = () => {
                         quantity: data.quantity
                     }
                     // send to db 
-                    fetch('http://localhost:5000/product', {
+                    fetch('https://pacific-eyrie-12324.herokuapp.com/product', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

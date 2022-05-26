@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const UserTable = ({ user, refetch }) => {
     const { email, role, photoURL } = user;
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://pacific-eyrie-12324.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const UserTable = ({ user, refetch }) => {
 
 
     const handleDelete = email => {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://pacific-eyrie-12324.herokuapp.com/user/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -26,7 +26,7 @@ const ProductDetails = () => {
             price: price * orderQuantity,
             userEmail: user.email
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://pacific-eyrie-12324.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

@@ -10,7 +10,7 @@ const MyAllOrders = () => {
     const [user] = useAuthState(auth);
     const [order, setOrder] = useState();
 
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://pacific-eyrie-12324.herokuapp.com/order?userEmail=${user.email}`, {
         method: 'GET',
         headers: {
             authorization: ` Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const MyAllOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are You sure to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/order/${id}`
+            const url = `https://pacific-eyrie-12324.herokuapp.com/order/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

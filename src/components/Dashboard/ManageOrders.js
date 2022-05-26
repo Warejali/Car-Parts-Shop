@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 
 const ManageOrders = () => {
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/orders', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://pacific-eyrie-12324.herokuapp.com/orders', {
         method: 'GET',
         headers: {
             authorization: ` Bearer ${localStorage.getItem('accessToken')}`
