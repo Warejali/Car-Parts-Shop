@@ -12,13 +12,13 @@ const Navbar = () => {
         localStorage.removeItem('accessToken')
     };
     const menuItems = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/blog">Blog</Link></li>
-        <li><Link to="/reviews">Reviews</Link></li>
+        <li className='text-white'><Link to="/">Home</Link></li>
+        <li className='text-white'><Link to="/blog">Blog</Link></li>
+        <li className='text-white'><Link to="/contact">Contact</Link></li>
         {
-            user && <li><Link to="/dashboard">Dashboard</Link></li>
+            user && <li className='text-white'><Link to="/dashboard">Dashboard</Link></li>
         }
-        <li>{user ? <button onClick={logout} className='btn btn-secondary'>Sign Out</button> : <Link to="/login">Login</Link>}</li>
+        <li className='text-white'>{user ? <button onClick={logout} className='btn btn-secondary'>Sign Out</button> : <Link to="/login">Login</Link>}</li>
     </>
     return (
         <div className="navbar bg-accent px-14">
@@ -32,7 +32,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost normal-case text-xl"><img className='xs' src={logo} alt="" /></Link>
+                <Link to="/" className="btn btn-ghost normal-case "><h2 className='text-xl font-bolder text-white'>WARAJ AUTO</h2></Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

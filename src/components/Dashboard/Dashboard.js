@@ -15,7 +15,7 @@ const Dashboard = () => {
                     {/* <!-- Page content here --> */}
                     <h2 className='text-primary text-4xl'>Welcome to Your Dashboard</h2>
                     <Outlet></Outlet>
-                    <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    {/* <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
 
                 </div>
                 <div className="drawer-side">

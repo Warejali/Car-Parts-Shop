@@ -25,6 +25,7 @@ import UpdateProfile from './components/Dashboard/UpdateProfile';
 import Blogs from './components/Blogs/Blogs';
 import NotFound from './components/Shared/NotFound';
 import Purchase from './components/Products/Purchase';
+import Contact from './components/Home/Contact';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/blog" element={<Blogs></Blogs>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
+        <Route path="/contact" element={<Contact></Contact>} />
         <Route path="/productDetails/:id" element={<RequireAuth><ProductDetails></ProductDetails></RequireAuth>} />
         <Route path="/purchase/:id" element={<RequireAuth><Purchase></Purchase></RequireAuth>} />
 
