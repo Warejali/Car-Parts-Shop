@@ -3,7 +3,6 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
-import logo from "../../assets/Logo.png"
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
@@ -14,7 +13,7 @@ const Navbar = () => {
     const menuItems = <>
         <li className='text-white'><Link to="/">Home</Link></li>
         <li className='text-white'><Link to="/blog">Blog</Link></li>
-        <li className='text-white'><Link to="/contact">Contact</Link></li>
+
         {
             user && <li className='text-white'><Link to="/dashboard">Dashboard</Link></li>
         }

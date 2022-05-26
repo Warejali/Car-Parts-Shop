@@ -1,8 +1,8 @@
 import React from "react";
-import img1 from "../../assets/images/team/avatar-1.png";
-import img2 from "../../assets/images/team/avatar-2.png";
-import img3 from "../../assets/images/team/avatar-3.png";
-import img4 from "../../assets/images/team/avatar-4.png";
+import img1 from "../../assets/team/avatar-1.png";
+import img2 from "../../assets/team/avatar-2.png";
+import img3 from "../../assets/team/avatar-3.png";
+import img4 from "../../assets/team/avatar-4.png";
 
 const Team = () => {
   return (
