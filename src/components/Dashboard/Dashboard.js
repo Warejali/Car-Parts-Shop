@@ -12,10 +12,10 @@ const Dashboard = () => {
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col lg:px-14">
-                    {/* <!-- Page content here --> */}
+
                     <h2 className='text-primary text-4xl'>Welcome to Your Dashboard</h2>
                     <Outlet></Outlet>
-                    {/* <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
+
 
                 </div>
                 <div className="drawer-side">

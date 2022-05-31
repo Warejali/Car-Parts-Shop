@@ -126,13 +126,13 @@ const Purchase = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col text-center w-full">
+      <div className="flex flex-col text-center w-full mx-auto">
 
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">
           Detailed information about the product
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 mx-auto lg:max-w-3xl">
         <div className="card">
           <div className="card-body" id="login">
             <form onSubmit={handleSubmit(onSubmit)}>
