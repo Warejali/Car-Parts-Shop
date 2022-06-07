@@ -6,7 +6,9 @@ Website [Live link](https://manufacturer-website-8abb8.firebaseapp.com).
 ## Develop WARAJ AUTO website 
 ***
 A list of action plan:
-* I am develop a warehouse website website. I have created lot of components. I am working on the website with react.
+* Complete car parts wholesale website with full admin panel. 
+* Admin can manage inventory, products, orders, users, reviews,message etc.
+* User can pay the product in the stripe, there are strong authentication.
 * I have use React, React Bootstrap, Node JS, ect. 
 * The website is inventory management. 
 * I have connect with react router for single page website. I have create lot of Routes for different sections.  
