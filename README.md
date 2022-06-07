@@ -9,6 +9,7 @@ A list of action plan:
 * Complete car parts wholesale website with full admin panel. 
 * Admin can manage inventory, products, orders, users, reviews,message etc.
 * User can pay the product in the stripe, there are strong authentication.
+* A MERN Stack web application where user is able to buy a product
 * I have use React, React Bootstrap, Node JS, ect. 
 * The website is inventory management. 
 * I have connect with react router for single page website. I have create lot of Routes for different sections.  
